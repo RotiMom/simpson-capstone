@@ -1,65 +1,73 @@
-My Subject
-==========
+Report 2
+========
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus ante id
-efficitur vestibulum. Praesent lacinia tellus cursus tortor condimentum, nec
-tempus nibh aliquam. Sed id pulvinar risus. Morbi elementum odio iaculis massa
-fermentum, vitae posuere urna interdum. Quisque eu massa sapien. Ut vel nunc sit
-amet enim fermentum ultricies pharetra sit amet est.
+| Author: Andrya Carter
+| Posted: 5/28/2022
+| Report 2: Next Steps
 
-Subheading
-----------
+This report covers activities performed between 5/30/22 – 6/6/22. This report
+covers the decision to add a second end point selection, table creation,
+indexes and foreign key selection.
 
-Cras pharetra ut felis nec
-feugiat. Donec ut mauris tristique, fermentum ipsum et, laoreet dolor. Vivamus
-congue nisi id elit fringilla varius. Quisque maximus nec nisl id egestas. Fusce
-sagittis, metus at porta eleifend, dui massa ullamcorper risus, in tempus sem
-quam id sapien. Vivamus tempor ligula id nunc lobortis posuere. Sed eget ipsum
-velit. Nulla vulputate ipsum sed magna porttitor, sit amet elementum ante ultricies.
-Nam scelerisque lectus sodales erat iaculis, vitae pellentesque magna facilisis.
+Contents:
 
-Aliquam ex lorem, molestie at finibus quis, ullamcorper et purus. Pellentesque
-habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-ridiculus mus. Vivamus dictum interdum pulvinar.
+* Additional Endpoint Selection
+* Table creation
 
-In molestie augue id orci
-aliquet vehicula. Donec ullamcorper, lectus in molestie consequat, magna erat
-rhoncus sapien, sit amet semper ante elit non purus. Cras ac laoreet neque.
-Aenean maximus lacus elementum neque ultricies, tristique tincidunt lacus
-lobortis. Proin molestie bibendum neque et euismod. Aliquam eu dictum diam.
-Pellentesque quis porta urna.
 
-Subheading
-----------
+Additional End Point Selection -
+--------------------------------
+I opted to add an additional end point because I wanted/needed more than one
+table for my database. The ``/v11/finance/quoteSummary/{symbol}`` will allow me to
+pull additional information about the companies as well as make it more
+efficient when adding and deleting a company in the future. As I can tie it to
+a stock symbol and have a foreign key in place to ensure there are checks and
+balances within the database.
 
-Aliquam tempus urna diam, eu sagittis magna porta eu. Fusce aliquam nunc vitae
-lectus vulputate, quis commodo augue molestie. Vestibulum fermentum nunc odio,
-et dapibus eros porttitor at. Phasellus auctor, elit nec ultricies fermentum,
-sem augue volutpat mi, eget malesuada metus purus ut dolor. Aenean posuere
-tortor ligula, vitae ultrices tellus eleifend ac. Morbi velit magna,
-sollicitudin vitae aliquet sed, tincidunt non enim. Vivamus tempus eros ac
-purus varius suscipit. Aliquam eu egestas metus.
+.. image:: ep2.png
+   :width: 50%
 
-Morbi augue turpis, imperdiet non turpis quis, consequat varius quam.
-Suspendisse imperdiet dapibus arcu viverra aliquam. Fusce eu mauris turpis.
-Nullam auctor, purus et imperdiet tristique, lacus lorem vehicula sapien,
-a tempus quam ex vitae mi. Cras nec lobortis mi. Integer ultricies ornare
-sagittis. Praesent elementum sem justo, vel rhoncus orci fringilla vitae.
-Sed gravida urna neque, vel convallis metus dapibus ut. Mauris euismod quam
-ante, quis interdum erat viverra id. Aliquam bibendum laoreet odio at imperdiet.
-Morbi placerat, leo id tincidunt iaculis, nulla nunc luctus massa, et vulputate
-nisi est et nibh. In gravida ut ligula non sodales. Phasellus porttitor varius
-iaculis.
+.. image:: ep3.png
+   :width: 50%
 
-Maecenas malesuada blandit tellus, id fringilla sem tempor eget. Morbi maximus
-euismod bibendum. Maecenas sit amet dolor ut orci tristique elementum.
-Suspendisse scelerisque porta metus, at tincidunt mi. Duis et mauris at enim
-finibus maximus. Nunc vel justo ex.
+.. image:: ep4.png
+   :width: 50%
 
-Vivamus ultricies eros ante, nec egestas
-lorem fermentum id. Aliquam erat volutpat. Aenean tempus eu mi a elementum.
-Donec sit amet iaculis sapien. Proin imperdiet hendrerit sem quis tempus.
-Etiam metus augue, ornare consequat magna ut, malesuada mollis erat. Etiam
-porta efficitur sapien sed congue. In tristique est urna, sit amet varius
-enim finibus sed.
+Table Creation Steps-
+---------------------
+See statements below each screen shot as well as summary at the bottom. I am
+utilizing Navicat to complete the data modeling.
+
+.. image:: tc1.png
+   :width: 50%
+
+This index prevents from duplicating stocks, if a duplicate stock is entered you
+will receive a unique key exception.
+
+.. image:: tc2.png
+   :width: 50%
+
+Will ensure that a symbol record exist for the daily price or fails. The on
+delete will clean up the daily records when a symbol is deleted.
+
+.. image:: tc3.png
+   :width: 50%
+
+
+Going to ensure that I only have one closing price for a particular stock per
+day.
+
+
+.. image:: tc4.png
+   :width: 50%
+
+
+
+As stated above the additional end point allows me to have two tables, I have
+from the above created indexes and foreign keys using the information pulled
+from the two end points. Daily prices has a zero or many because I might have
+added a new symbol without refreshing the daily prices. Symbol has to exist to
+insert into daily prices and because of the foreign key there would have to be
+a symbol record for every daily price and the cascade delete would remove any
+daily price records when I delete a symbol.
+
