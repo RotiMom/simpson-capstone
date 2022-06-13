@@ -4,6 +4,7 @@ Report 3
 | Author: Andrya Carter
 | Posted: 5/28/2022
 | Report 3: First Steps
+| Hours: 8
 
 This report covers activities performed between 6/7/22 – 6/13/22. This report
 covers ......................
