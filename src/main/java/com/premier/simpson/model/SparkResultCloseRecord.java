@@ -1,4 +1,4 @@
-package com.premier.simpson.dto;
+package com.premier.simpson.model;
 
 import java.util.Date;
 

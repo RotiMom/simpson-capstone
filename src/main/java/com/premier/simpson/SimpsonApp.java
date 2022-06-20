@@ -1,9 +1,9 @@
 package com.premier.simpson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.premier.simpson.dto.SparkResult;
-import com.premier.simpson.dto.SparkResultCloseRecord;
-import com.premier.simpson.dto.SparkResultItem;
+import com.premier.simpson.model.SparkResult;
+import com.premier.simpson.model.SparkResultCloseRecord;
+import com.premier.simpson.model.SparkResultItem;
 
 import java.io.IOException;
 import java.net.URL;

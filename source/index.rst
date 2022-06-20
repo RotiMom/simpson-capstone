@@ -8,3 +8,4 @@ Simpson Capstone
    report1/index
    report2/index
    report3/index
+   report4/index

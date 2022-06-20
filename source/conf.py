@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Sample Project Name'
-copyright = '2021, Jane Smith'
-author = 'Jane Smith'
+project = 'Simpson Capstone Project'
+copyright = '2022, Andrya Carter'
+author = 'Andrya Carter'
 
 
 # -- General configuration ---------------------------------------------------
