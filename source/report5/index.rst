@@ -126,4 +126,4 @@ Hours
 * Rest Controller - 2 hours
 * Data Source - 2 hours
 * Database Inserts - 3 hours
-* Summary Including documentation - 2 hours
+* Summary Including Documentation - 2 hours
