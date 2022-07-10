@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Simpson Capstone</title>
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/js/capstone.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-11">
+                    <h2>Stock Mark Data</h2>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-primary refresh-btn" type="button">Refresh Data</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <select>
+                        <option>GOOG</option>
+                        <option>AAPL</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <canvas height="50" id="myChart"></canvas>
+                </div>
+            </div>
+
+            <div class="row available-data">
+                <div class="col-md-12"><h4>Data available for the following</h4></div>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Sector</th>
+                            <th>Industry</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Zip</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GOOG</td>
+                            <td>Communication Services</td>
+                            <td>Internet Content & Information</td>
+                            <td>Mountain View</td>
+                            <td>CA</td>
+                            <td>94043</td>
+                        </tr>
+                        <tr>
+                            <td>AAPL</td>
+                            <td>Technology</td>
+                            <td>Consumer Electronics</td>
+                            <td>Cupertino</td>
+                            <td>CA</td>
+                            <td>95014</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
