@@ -84,7 +84,7 @@ public class RestController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("accept", "application/json");
-        headers.add("X-API-KEY", "BL1qUOA0yc12ULFiJAsD64lt18Z7fPviWYXscjye");
+        headers.add("X-API-KEY", "7ytjXDgTRMiP9vbcW5Lr7ACrlnjRvZ82Ngv2pmoh");
         HttpEntity<Object> entity = new HttpEntity<>(headers);
 
         String payload = StringUtils.collectionToDelimitedString(symbols, ",");
@@ -99,7 +99,7 @@ public class RestController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("accept", "application/json");
-        headers.add("X-API-KEY", "BL1qUOA0yc12ULFiJAsD64lt18Z7fPviWYXscjye");
+        headers.add("X-API-KEY", "7ytjXDgTRMiP9vbcW5Lr7ACrlnjRvZ82Ngv2pmoh");
         HttpEntity<Object> entity = new HttpEntity<>(headers);
 
         RestTemplate restTemplate = new RestTemplate();
@@ -111,13 +111,36 @@ public class RestController {
             Map payload = response.getBody();
             Map quoteSummary = (Map) payload.get("quoteSummary");
             List result = (List) quoteSummary.get("result");
-            Map assetProfile = (Map) ((Map) result.get(0)).get("assetProfile");
+
+            Map assetProfile = new HashMap();
+            if(result != null) {
+                assetProfile = (Map) ((Map) result.get(0)).get("assetProfile");
+            }
 
             String sector = (String) assetProfile.get("sector");
+            if(sector == null) {
+                sector = "X";
+            }
+
             String industry = (String) assetProfile.get("industry");
+            if(industry == null) {
+                industry = "X";
+            }
+
             String city = (String) assetProfile.get("city");
+            if(city == null) {
+                city = "X";
+            }
+
             String state = (String) assetProfile.get("state");
+            if(state == null) {
+                state = "X";
+            }
+
             String zip = (String) assetProfile.get("zip");
+            if(zip == null) {
+                zip = "X";
+            }
 
             jdbcTemplate.update("update SYMBOLS set SECTOR = ?, INDUSTRY = ?, CITY = ?, STATE = ?, ZIP = ? where ID = ?"
                     , sector, industry, city, state, zip, id);
