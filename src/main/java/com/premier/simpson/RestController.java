@@ -4,11 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.premier.simpson.model.SparkResult;
 import com.premier.simpson.model.SparkResultCloseRecord;
 import com.premier.simpson.model.SparkResultItem;
+import com.premier.simpson.model.Symbol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +26,7 @@ public class RestController {
     private JdbcTemplate jdbcTemplate;
 
     @GetMapping(value = "/refresh")
-    private SparkResult refresh() throws Exception {
+    public SparkResult refresh() throws Exception {
 
         updateQuoteSummaryFromWebsite();
 
@@ -70,6 +72,12 @@ public class RestController {
             }
         }
         return result;
+    }
+
+    @GetMapping(value = "/symbols")
+    public List<Symbol> getSymbols() {
+        List<Symbol> query = jdbcTemplate.query("SELECT * FROM SYMBOLS", new BeanPropertyRowMapper(Symbol.class));
+        return query;
     }
 
     private Map getSparkDataFromJson() throws IOException {
