@@ -1,10 +1,7 @@
 package com.premier.simpson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.premier.simpson.model.SparkResult;
-import com.premier.simpson.model.SparkResultCloseRecord;
-import com.premier.simpson.model.SparkResultItem;
-import com.premier.simpson.model.Symbol;
+import com.premier.simpson.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -14,6 +11,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.net.URL;
@@ -76,8 +75,20 @@ public class RestController {
 
     @GetMapping(value = "/symbols")
     public List<Symbol> getSymbols() {
-        List<Symbol> query = jdbcTemplate.query("SELECT * FROM SYMBOLS", new BeanPropertyRowMapper(Symbol.class));
-        return query;
+        List<Symbol> result = jdbcTemplate.query("SELECT * FROM SYMBOLS", new BeanPropertyRowMapper(Symbol.class));
+        return result;
+    }
+
+    @GetMapping(value = "/daily-prices")
+    public List<Symbol> getDailyPrices() {
+        List<Symbol> result = jdbcTemplate.query("SELECT * FROM DAILY_PRICES ORDER BY CLOSING_DATE", new BeanPropertyRowMapper(DailyPrice.class));
+        return result;
+    }
+
+    @GetMapping(value = "/daily-prices/{symbolId}")
+    public List<Symbol> getDailyPrices(@PathVariable("symbolId") Long symbolId) {
+        List<Symbol> result = jdbcTemplate.query("SELECT * FROM DAILY_PRICES WHERE SYMBOL_ID = ? ORDER BY CLOSING_DATE", new Object[]{symbolId}, new BeanPropertyRowMapper(DailyPrice.class));
+        return result;
     }
 
     private Map getSparkDataFromJson() throws IOException {

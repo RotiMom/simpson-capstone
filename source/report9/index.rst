@@ -126,6 +126,10 @@ course we used regular Javascript to update the HTML, I decided to use that code
 
     });
 
+
+.. image:: wp2.png
+   :width: 100%
+
 Summary
 -------
 The work done for this week includes return the data from the database using a RestController

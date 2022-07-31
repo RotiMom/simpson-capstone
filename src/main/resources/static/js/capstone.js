@@ -23,8 +23,24 @@ const config = {
     options: {}
 };
 
+let dailyPrices = [];
+let myChart = {};
+
+function refreshData() {
+    $('.refresh-btn').addClass('visually-hidden');
+    $('.refresh-btn-spinner').removeClass('visually-hidden');
+
+    $.ajax({
+        method: "GET",
+        url: "http://localhost:8080/refresh",
+    }).always(function () {
+        $('.refresh-btn').removeClass('visually-hidden');
+        $('.refresh-btn-spinner').addClass('visually-hidden');
+    });
+}
+
 $(document).ready(function () {
-    const myChart = new Chart(
+    myChart = new Chart(
         document.getElementById('myChart'),
         config
     );
@@ -94,6 +110,13 @@ $(document).ready(function () {
             select.append(option);
         });
 
+    });
+
+    $.ajax({
+        method: "GET",
+        url: "http://localhost:8080/daily-prices",
+    }).done(function (data) {
+       dailyPrices = data;
     });
 
 });

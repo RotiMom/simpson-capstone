@@ -14,3 +14,4 @@ Simpson Capstone
    report7/index
    report8/index
    report9/index
+   report10/index

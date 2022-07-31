@@ -1,5 +1,7 @@
-.refresh-btn {
+.refresh-btn, .refresh-btn-spinner {
  margin-top: 20px;
+ width: 115px;
+ font-size: small !important;
 }
 
 .available-data {
